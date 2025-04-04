@@ -1,4 +1,4 @@
-# RooCode Human Relay Automation
+# Chilling-Vibes: RooCode Human Relay Automation
 
 Automates the manual copy-paste workflow between RooCode's Human Relay dialog in VS Code and Google AI Studio, with robust multi-modal UI detection and optional browser automation.
 
