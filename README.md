@@ -4,6 +4,10 @@ Automates the manual copy-paste workflow between RooCode's Human Relay dialog in
 
 ---
 
+[Youtube](https://youtu.be/_Qn_WGFpd-A?si=9ZNg0JEUSPs1f5aA)
+
+https://github.com/user-attachments/assets/7a4175a8-a0db-4303-a7f3-8ac0e6f97ba0
+
 ## Features
 
 - Detects Human Relay dialog in VS Code and copies the prompt
