@@ -1,0 +1,10 @@
+pyautogui
+pyyaml
+pillow
+opencv-python
+pytesseract
+pygetwindow
+selenium
+playwright
+keyboard
+pyperclip

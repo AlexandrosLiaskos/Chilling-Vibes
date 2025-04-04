@@ -1,0 +1,61 @@
+# RooCode Relay Automation Configuration
+
+timeouts:
+  detection: 120        # seconds to wait for dialog/buttons
+  response: 300         # seconds to wait for AI Studio response
+
+delays:
+  operation: 1          # seconds between operations
+  key: 0.05             # seconds between key presses
+
+confidence: 0.7         # Confidence level for image recognition (0-1)
+
+window_titles:
+  vscode: "Visual Studio Code"
+  browser: "Google AI Studio"
+
+templates:
+  vscode_copy_button: "C:\\Users\\alexl\\Documents\\Projects\\tools\\chilling-vibes_v010\\assets\\HumanRelay_Response_Copy_Button.png"
+  vscode_submit_button: "C:\\Users\\alexl\\Documents\\Projects\\tools\\chilling-vibes_v010\\assets\\VsCode.png"
+  ai_studio_textarea: "C:\\Users\\alexl\\Documents\\Projects\\tools\\chilling-vibes_v010\\assets\\ai_studio_textarea.png"
+  ai_studio_run_button: "C:\\Users\\alexl\\Documents\\Projects\\tools\\chilling-vibes_v010\\assets\\ai_studio_run_button.png"
+  ai_studio_copy_markdown: "C:\\Users\\alexl\\Documents\\Projects\\tools\\chilling-vibes_v010\\assets\\ai_studio_copy_markdown.png"
+  ai_studio_response_complete: "C:\\Users\\alexl\\Documents\\Projects\\tools\\chilling-vibes_v010\\assets\\ai_studio_response_complete.png"
+  ai_studio_response_block: "C:\\Users\\alexl\\Documents\\Projects\\tools\\chilling-vibes_v010\\assets\\ai_studio_response_block.png"
+  ai_studio_more_options: "C:\\Users\\alexl\\Documents\\Projects\\tools\\chilling-vibes_v010\\assets\\ai_studio_more_options.png"
+  vscode_textarea: "C:\\Users\\alexl\\Documents\\Projects\\tools\\chilling-vibes_v010\\assets\\vscode_textarea.png"
+
+# Optional: Selenium/Playwright settings
+browser_automation:
+  enabled: false
+  backend: "selenium"   # Options: "selenium" or "playwright"
+  driver_path: ""
+  url: "https://aistudio.google.com/prompts/new_chat"
+
+# OCR settings
+ocr:
+  enabled: true
+  language: "eng"
+
+# Pixel color heuristics (optional, for fallback UI detection)
+pixels:
+  vscode_copy_button:
+    x: 100            # X coordinate of pixel to check (update accordingly)
+    y: 200            # Y coordinate of pixel to check (update accordingly)
+    color: [255, 255, 255]   # Expected RGB color (update accordingly)
+    tolerance: 20     # Allowed deviation per channel
+
+  ai_studio_run_button:
+    region: [300, 400, 50, 20]   # left, top, width, height (update accordingly)
+    color: [0, 120, 255]         # Expected average RGB color (update accordingly)
+    tolerance: 15                # Allowed deviation per channel
+
+# Notification settings
+notifications:
+  enabled: true
+
+# Retry and backoff settings
+retries:
+  max_retries_per_iteration: 5     # Maximum retries before skipping iteration
+  backoff_base_seconds: 2          # Base seconds for exponential backoff (2,4,8,...)
+  max_backoff_seconds: 30          # Maximum backoff wait time

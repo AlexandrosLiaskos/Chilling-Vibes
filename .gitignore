@@ -1,0 +1,52 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment directories
+.venv/
+venv/
+ENV/
+env/
+
+# Environment variable files
+.env
+
+# VSCode settings
+.vscode/
+docs/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Python tooling caches
+.mypy_cache/
+.pytest_cache/
+coverage/
+htmlcov/
+
+# Logs and local data
+*.log
+
+# Backup files
+*~
+
+# Ignore compiled C extensions
+*.so
+
+# Ignore distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Ignore pip wheel cache
+pip-wheel-metadata/
+
+# Ignore test output
+test-results/
+
+# Ignore temporary files
+tmp/
+temp/
