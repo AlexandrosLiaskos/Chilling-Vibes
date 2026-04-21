@@ -40,6 +40,21 @@
         <a class="btn primary" href="#quickstart">Get started <span aria-hidden="true">→</span></a>
         <a class="btn ghost" href="https://github.com/AlexandrosLiaskos/Chilling-Vibes" target="_blank" rel="noopener noreferrer">View on GitHub</a>
       </div>
+
+      <a class="repo-stats" href="https://github.com/AlexandrosLiaskos/Chilling-Vibes/stargazers" target="_blank" rel="noopener noreferrer" aria-label="View stargazers on GitHub">
+        <span class="repo-stat">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <span class="repo-stat-num" data-stars>34</span>
+          <span class="repo-stat-label" data-stars-label>stars</span>
+        </span>
+        <span class="repo-stat-sep" aria-hidden="true">·</span>
+        <span class="repo-stat">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 8.5v1.5a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8.5M12 12.5v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="repo-stat-num" data-forks>1</span>
+          <span class="repo-stat-label" data-forks-label>fork</span>
+        </span>
+        <span class="repo-stat-cta" aria-hidden="true">↗</span>
+      </a>
     </div>
 
     <figure class="hero-visual wrap">
@@ -180,6 +195,32 @@ playwright install   # optional, for Playwright backend</code></pre>
     </p>
   </div>
 </footer>
+
+<script>
+  // Keep stargazer / fork counts fresh on each page load; fall back to the
+  // static numbers already rendered if the API is unreachable or rate-limited.
+  (function () {
+    var fmt = function (n) { return (n || 0).toLocaleString('en-US'); };
+    fetch('https://api.github.com/repos/AlexandrosLiaskos/Chilling-Vibes', {
+      headers: { Accept: 'application/vnd.github+json' },
+    })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d) return;
+        var stars = d.stargazers_count;
+        var forks = d.forks_count;
+        var starsEl = document.querySelector('[data-stars]');
+        var forksEl = document.querySelector('[data-forks]');
+        var starsLabel = document.querySelector('[data-stars-label]');
+        var forksLabel = document.querySelector('[data-forks-label]');
+        if (starsEl) starsEl.textContent = fmt(stars);
+        if (forksEl) forksEl.textContent = fmt(forks);
+        if (starsLabel) starsLabel.textContent = stars === 1 ? 'star' : 'stars';
+        if (forksLabel) forksLabel.textContent = forks === 1 ? 'fork' : 'forks';
+      })
+      .catch(function () { /* keep fallback numbers */ });
+  })();
+</script>
 
 </body>
 </html>

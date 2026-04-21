@@ -229,6 +229,63 @@ kbd {
   margin-top: 2rem;
 }
 
+/* Repo stats pill — formal social proof, restrained */
+.repo-stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1.25rem;
+  padding: 0.5rem 0.9rem 0.5rem 0.95rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.repo-stats:hover {
+  background: var(--surface-strong);
+  border-color: var(--border-strong);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.repo-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  line-height: 1;
+}
+.repo-stat svg {
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.repo-stat-num {
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.005em;
+}
+.repo-stat-label { color: var(--muted); }
+
+.repo-stat-sep {
+  color: var(--faint);
+  font-size: 0.9em;
+}
+
+.repo-stat-cta {
+  color: var(--faint);
+  font-size: 0.95em;
+  margin-left: 0.15rem;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.repo-stats:hover .repo-stat-cta { color: var(--ink); transform: translate(1px, -1px); }
+
 .btn {
   display: inline-flex;
   align-items: center;
