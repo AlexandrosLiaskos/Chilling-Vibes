@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chilling-Vibes — RooCode ↔ AI Studio automation</title>
+<meta name="description" content="Chilling-Vibes automates the manual copy-paste workflow between RooCode's Human Relay dialog in VS Code and Google AI Studio.">
+<meta property="og:title" content="Chilling-Vibes">
+<meta property="og:description" content="Automate the RooCode ↔ AI Studio copy-paste loop.">
+<meta property="og:image" content="./workflow.png">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="#top">Chilling-Vibes</a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#quickstart">Quickstart</a>
+      <a class="ghost-btn" href="https://github.com/AlexandrosLiaskos/Chilling-Vibes" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-wrap">
+      <p class="eyebrow">A developer utility</p>
+      <h1>Automate the <em>RooCode ↔ AI&nbsp;Studio</em> copy-paste loop.</h1>
+      <p class="tagline">Chilling-Vibes watches RooCode's Human Relay dialog in VS Code, relays each prompt to Google AI Studio, waits for the response, and feeds it back — so you don't have to babysit the tab.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#quickstart">Get started <span aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="https://github.com/AlexandrosLiaskos/Chilling-Vibes" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+    </div>
+
+    <figure class="hero-visual wrap">
+      <img src="./workflow.png" alt="Chilling-Vibes workflow — AI Studio, the VS Code Human Relay dialog, and the VS Code file explorer side by side" />
+      <figcaption>The three windows the automation drives, top to bottom.</figcaption>
+    </figure>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <p class="eyebrow">Why</p>
+      <h2>The loop nobody wants to babysit.</h2>
+      <p class="lede">RooCode's Human Relay dialog asks you to copy its prompt into AI Studio, run the model, and paste the markdown back. Manually. Repeatedly. Chilling-Vibes does all of that for you — detecting the UI, switching windows, clicking the right buttons, waiting on the response, and feeding it back into the editor.</p>
+    </div>
+  </section>
+
+  <section id="how" class="how">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps, on repeat.</h2>
+
+      <ol class="steps">
+        <li>
+          <span class="step-num">01</span>
+          <h3>Copy</h3>
+          <p>Focuses VS Code, finds the <em>Copy</em> button in the Human Relay dialog via image templates, OCR, or pixel heuristics, and reads the prompt off the clipboard.</p>
+        </li>
+        <li>
+          <span class="step-num">02</span>
+          <h3>Relay</h3>
+          <p>Switches to your browser — or drives it directly via Selenium or Playwright — pastes the prompt into AI Studio, clicks <em>Run</em>, and waits for the response to complete.</p>
+        </li>
+        <li>
+          <span class="step-num">03</span>
+          <h3>Paste</h3>
+          <p>Extracts the markdown response, switches back to VS Code, pastes it into the relay textarea, and submits. Then starts the next iteration.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="features" class="features">
+    <div class="wrap">
+      <p class="eyebrow">Features</p>
+      <h2>Robust where it matters.</h2>
+
+      <div class="feature-grid">
+        <article class="feature">
+          <h3>Multi-modal UI detection</h3>
+          <p>Image templates first, OCR as fallback, pixel-colour heuristics as last resort. Resilient to UI drift.</p>
+        </article>
+        <article class="feature">
+          <h3>Optional browser automation</h3>
+          <p>Swap the UI scraper for Selenium or Playwright when you want speed and reliability over portability.</p>
+        </article>
+        <article class="feature">
+          <h3>Hotkey pause &amp; resume</h3>
+          <p><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>P</kbd> pauses or resumes the loop from anywhere — notifications confirm the state change.</p>
+        </article>
+        <article class="feature">
+          <h3>Retries with backoff</h3>
+          <p>Configurable max retries and exponential delays ride out transient detection failures without derailing the run.</p>
+        </article>
+        <article class="feature">
+          <h3>Cross-platform notifications</h3>
+          <p>Windows and Linux desktop toasts, with a console fallback when <code>win10toast</code> or <code>notify-send</code> aren't available.</p>
+        </article>
+        <article class="feature">
+          <h3>YAML-first configuration</h3>
+          <p>Timeouts, confidence, window titles, pixel regions, templates — everything tunable lives in a single <code>config.yaml</code>.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="quickstart" class="quickstart">
+    <div class="wrap">
+      <p class="eyebrow">Quickstart</p>
+      <h2>Three commands.</h2>
+
+      <ol class="quickstart-list">
+        <li>
+          <div class="quickstart-header">
+            <span class="step-num">01</span>
+            <h3>Install dependencies</h3>
+          </div>
+          <pre><code class="lang-bash">pip install -r requirements.txt
+playwright install   # optional, for Playwright backend</code></pre>
+        </li>
+        <li>
+          <div class="quickstart-header">
+            <span class="step-num">02</span>
+            <h3>Capture UI templates</h3>
+          </div>
+          <pre><code class="lang-bash">python scripts/capture_templates.py</code></pre>
+          <p class="quickstart-note">Follow the prompts to screenshot the buttons and textareas the automation will drive.</p>
+        </li>
+        <li>
+          <div class="quickstart-header">
+            <span class="step-num">03</span>
+            <h3>Run the loop</h3>
+          </div>
+          <pre><code class="lang-bash">python src/relay_automation.py</code></pre>
+          <p class="quickstart-note">Press <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>P</kbd> to pause, <kbd>Ctrl</kbd>+<kbd>C</kbd> in the terminal to stop.</p>
+        </li>
+      </ol>
+
+      <p class="post-note">Need more detail? Read the <a href="https://github.com/AlexandrosLiaskos/Chilling-Vibes#readme" target="_blank" rel="noopener noreferrer">full README</a> for configuration, troubleshooting, and the pixel-heuristics fallback.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-wrap">
+    <p>Chilling-Vibes is an open-source utility built by <a href="https://www.liaskos.eu/" target="_blank" rel="noopener noreferrer">Alexandros Liaskos</a>.</p>
+    <p class="footer-links">
+      <a href="https://github.com/AlexandrosLiaskos/Chilling-Vibes" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://github.com/AlexandrosLiaskos/Chilling-Vibes/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://github.com/AlexandrosLiaskos/Chilling-Vibes#readme" target="_blank" rel="noopener noreferrer">README</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

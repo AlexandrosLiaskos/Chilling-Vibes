@@ -14,7 +14,6 @@ env/
 
 # VSCode settings
 .vscode/
-docs/
 
 # OS generated files
 .DS_Store
