@@ -260,22 +260,73 @@ kbd {
 .hero-visual {
   margin-top: clamp(2.5rem, 5vw, 4rem);
   max-width: 1040px;
+  position: relative;
 }
-.hero-visual img {
+.hero-visual img,
+.hero-visual video {
   width: 100%;
   height: auto;
   display: block;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
+  background: var(--surface-strong);
   box-shadow:
     0 1px 2px rgba(20, 24, 34, 0.04),
-    0 20px 40px -18px rgba(20, 24, 34, 0.18);
+    0 24px 50px -22px rgba(20, 24, 34, 0.25);
+}
+.hero-visual video {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  outline: none;
 }
 .hero-visual figcaption {
   margin-top: 0.9rem;
   font-size: 0.82rem;
   color: var(--faint);
   text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* Small "PLAYING" badge overlay to signal the hero is actually moving */
+.playing-badge {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 11px;
+  background: color-mix(in oklch, var(--ink) 78%, transparent);
+  color: var(--bg);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+
+.playing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff6155;
+  box-shadow: 0 0 0 0 rgba(255, 97, 85, 0.6);
+  animation: pulse-dot 1.6s ease-out infinite;
+}
+
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgba(255, 97, 85, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(255, 97, 85, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 97, 85, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .playing-dot { animation: none; }
 }
 
 /* ===================
